@@ -27,6 +27,7 @@ export class ItemComponent implements OnInit {
   @Input() item: ShoppingItem;
 
   @Output() remove = new EventEmitter<number>();
+  @Output() purchased = new EventEmitter<ShoppingItem>();
 
   constructor() { }
 
@@ -45,6 +46,7 @@ export class ItemComponent implements OnInit {
 
   onTogglePurchased() {
     this.item.purchased = ! this.item.purchased;
+    this.purchased.emit(this.item);
   }
 
   onRemove() {

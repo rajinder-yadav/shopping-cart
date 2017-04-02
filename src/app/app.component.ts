@@ -23,7 +23,7 @@ export class AppComponent {
     this.basket = this.basket.filter(v => v.id !== id);
   }
 
-  onFilter(filter: string) {
-    console.log(filter);
+  onPurchased(item: ShoppingItem) {
+    this.basket = this.basket.map(v => v.id === item.id ? item : v);
   }
 }

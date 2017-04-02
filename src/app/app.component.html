@@ -5,11 +5,13 @@
     <option value="basket">Basket</option>
     <option value="purchased">Purchased</option>
   </select></p>
-  <input type="text" name="item" [(ngModel)]="item" (keyup.enter)="onAdd()"><button (click)="onAdd()" [disabled]='item.length===0'>Add</button>
-  <div class='f3 mt3'>
-    Food items
-  </div>
+  <input type="text" name="item" [(ngModel)]="item" (keyup.enter)="onAdd()">
+  <button (click)="onAdd()" [disabled]='item.length===0'>Add</button>
+  <div class='f3 mt3'>Food items</div>
   <div class='cf'>
-    <item *ngFor='let item of (basket | listFilter:filter)' (remove)='onRemoveItem($event)' [item]='item' class='mt2'></item>
+    <item *ngFor='let item of (basket | listFilter:filter)'
+      (remove)='onRemoveItem($event)'
+      (purchased)='onPurchased($event)'
+      [item]='item' class='mt2'></item>
   </div>
 </div>
